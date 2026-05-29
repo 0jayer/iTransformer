@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=1
+export CUDA_VISIBLE_DEVICES=0
 
 model_name=iTransformer
 
@@ -17,8 +17,9 @@ python -u run.py \
   --dec_in 21 \
   --c_out 21 \
   --des 'Exp' \
-  --d_model 512\
-  --d_ff 512\
+  --d_model 512 \
+  --d_ff 512 \
+  --use_gpu True \
   --itr 1
 
 
@@ -37,8 +38,9 @@ python -u run.py \
   --dec_in 21 \
   --c_out 21 \
   --des 'Exp' \
-  --d_model 512\
-  --d_ff 512\
+  --d_model 512 \
+  --d_ff 512 \
+  --use_gpu True \
   --itr 1
 
 
@@ -57,8 +59,9 @@ python -u run.py \
   --dec_in 21 \
   --c_out 21 \
   --des 'Exp' \
-  --d_model 512\
-  --d_ff 512\
+  --d_model 512 \
+  --d_ff 512 \
+  --use_gpu True \
   --itr 1
 
 
@@ -77,6 +80,7 @@ python -u run.py \
   --dec_in 21 \
   --c_out 21 \
   --des 'Exp' \
-  --d_model 512\
-  --d_ff 512\
+  --d_model 512 \
+  --d_ff 512 \
+  --use_gpu True \
   --itr 1
