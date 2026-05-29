@@ -135,3 +135,7 @@ checkpoints/
 results/
 *.pdf
 dataset/PEMS/*.npz
+dataset/electricity/
+dataset/Solar/
+dataset/traffic/
+dataset/PEMS/
