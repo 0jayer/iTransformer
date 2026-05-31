@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 from math import sqrt
+import os
 from utils.masking import TriangularCausalMask, ProbMask
 from reformer_pytorch import LSHSelfAttention
 from einops import rearrange
@@ -153,6 +154,23 @@ class FullAttention(nn.Module):
             scores.masked_fill_(attn_mask.mask, -np.inf)
 
         A = self.dropout(torch.softmax(scale * scores, dim=-1))
+        # --- DIAGNOSTIC HOOK ---
+        diagnostic_dir = 'attn_diagnostics'
+        os.makedirs(diagnostic_dir, exist_ok=True)
+
+        if not hasattr(FullAttention, '_call_count'):
+            FullAttention._call_count = 0
+
+        FullAttention._call_count += 1
+        count = FullAttention._call_count
+
+        # Save first 10 calls only (covers multiple layers and batches)
+        if count <= 10:
+            torch.save(A.detach().cpu(), f'{diagnostic_dir}/attn_{count:03d}.pt')
+            print(f"[DIAGNOSTIC] Saved call {count}, shape {A.shape}")
+
+        # --- END HOOK ---
+
         V = torch.einsum("bhls,bshd->blhd", A, values)
 
         if self.output_attention:

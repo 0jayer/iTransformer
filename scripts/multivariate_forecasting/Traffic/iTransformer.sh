@@ -21,6 +21,7 @@ python -u run.py \
   --d_ff 512 \
   --batch_size 16 \
   --learning_rate 0.001 \
+  --use_gpu True \
   --itr 1
 
 python -u run.py \
@@ -42,6 +43,7 @@ python -u run.py \
   --d_ff 512 \
   --batch_size 16 \
   --learning_rate 0.001 \
+  --use_gpu True \
   --itr 1
 
 python -u run.py \
@@ -63,6 +65,7 @@ python -u run.py \
   --d_ff 512 \
   --batch_size 16 \
   --learning_rate 0.001 \
+  --use_gpu True \
   --itr 1
 
 python -u run.py \
@@ -84,4 +87,5 @@ python -u run.py \
   --d_ff 512 \
   --batch_size 16 \
   --learning_rate 0.001\
+  --use_gpu True \
   --itr 1
